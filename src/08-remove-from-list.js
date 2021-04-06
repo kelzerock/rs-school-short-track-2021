@@ -19,7 +19,10 @@
 
 function removeKFromList(l, k) {
   const arr = l.filter((item) => {
-    if (item !== k) { return true; }
+    if (item !== k) {
+      return true;
+    }
+    return false;
   });
   return arr;
 }
