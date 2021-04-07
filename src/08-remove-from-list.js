@@ -18,12 +18,12 @@
  */
 
 function removeKFromList(l, k) {
-  const arr = l.filter((item) => {
-    if (item !== k) {
-      return true;
+  const arr = [];
+  for (let i = 0; i < l.length; i++) {
+    if (l[i] !== k) {
+      arr.push(l[i]);
     }
-    return false;
-  });
+  }
   return arr;
 }
 
