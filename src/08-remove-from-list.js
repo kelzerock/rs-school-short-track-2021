@@ -28,13 +28,13 @@ function removeKFromList(l, k) {
     return arr;
   }
   printList(l);
-  l.filter((item) => {
+  const result = l.filter((item) => {
     if (item !== k) {
       return true;
     }
     return false;
   });
-  return l;
+  return result;
 }
 
 module.exports = removeKFromList;
