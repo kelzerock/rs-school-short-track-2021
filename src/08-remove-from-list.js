@@ -27,23 +27,24 @@ function removeKFromList(l, k) {
     }
     return arr;
   }
-  function linkedList(arr) {
-    return arr.reduceRight((value, next) => ({ value, next }), null);
-  }
+  const result = [];
   if (Array.isArray(l) === true) {
-    printList(l);
-    const result = [];
     for (let i = 0; i < l.length; i++) {
       if (l[i] !== k) { result.push(l[i]); }
     }
-    return result;
+  } else {
+    const resultNo = printList(l);
+    for (let i = 0; i < resultNo.length; i++) {
+      if (resultNo[i] !== k) { result.push(resultNo[i]); }
+    }
   }
-  printList(l);
-  const result = [];
-  for (let i = 0; i < l.length; i++) {
-    if (l[i] !== k) { result.push(l[i]); }
+
+  let resultList = { next: null };
+  for (let i = result.length; i; i--) {
+    resultList.value = result.pop();
+    resultList = { next: resultList };
   }
-  return linkedList(result);
+  resultList = resultList.next;
 }
 
 module.exports = removeKFromList;
