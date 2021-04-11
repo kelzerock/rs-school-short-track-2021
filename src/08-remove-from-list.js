@@ -7,7 +7,7 @@
  * @return {List}
  *
  * @example
- * For l = [3, 1, 2, 3, 4, 5] and k = 3,
+ * For l = [3, 1, 2, 3, 4, 5] and l = 3,
  * the output should be [1, 2, 4, 5]
  *
  * Singly - linked lists are already defined with this interface
@@ -38,13 +38,13 @@ function removeKFromList(l, k) {
       if (resultNo[i] !== k) { result.push(resultNo[i]); }
     }
   }
-
   let resultList = { next: null };
   for (let i = result.length; i; i--) {
     resultList.value = result.pop();
     resultList = { next: resultList };
   }
   resultList = resultList.next;
+  return resultList;
 }
 
 module.exports = removeKFromList;
