@@ -21,32 +21,49 @@
  *  [1, 1, 1]
  * ]
  */
-function minesweeper(/* matrix */) {
-  // let arr
-
-  // for(let i = 0; i<matrix.length ; i++){
-  //   let resultHor = []
-  //   for(let j=0; j<matrix[i].length; j++){
-  //     let resultVer=0
-
-  //     if(matrix[i+1][j] ===true){
-  //       console.log(matrix[i+1][j]);
-
-  //       resultVer +=1}
-
-  //   }
-
-  // }
-  // console.log(result[0])
-  // console.log(result[1])
-  // console.log(result[2])
-  // console.log(matrix[0])
-  // console.log(matrix[1])
-  // console.log(matrix[2])
-
-  // result[1][2] +=1
-  // console.log(result)
-  throw new Error('Not implemented');
+function minesweeper(matrix) {
+  const x = matrix.length;
+  const y = matrix[0].length;
+  const arr = new Array(x);
+  if (y > 0) {
+    for (let i = 0; i < x; i++) {
+      arr[i] = new Array(y);
+    }
+  }
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr[0].length; j++) {
+      arr[i][j] = 0;
+    }
+  }
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[0].length; j++) {
+      if (matrix[i + 1] !== undefined) {
+        if (matrix[i + 1][j] === true) { arr[i][j] += 1; }
+      }
+      if (matrix[i - 1] !== undefined) {
+        if (matrix[i - 1][j] === true) { arr[i][j] += 1; }
+      }
+      if (matrix[j + 1] !== undefined) {
+        if (matrix[i][j + 1] === true) { arr[i][j] += 1; }
+      }
+      if (matrix[j - 1] !== undefined) {
+        if (matrix[i][j - 1] === true) { arr[i][j] += 1; }
+      }
+      if (matrix[i + 1] !== undefined && matrix[j + 1] !== undefined) {
+        if (matrix[i + 1][j + 1] === true) { arr[i][j] += 1; }
+      }
+      if (matrix[i + 1] !== undefined && matrix[j - 1] !== undefined) {
+        if (matrix[i + 1][j - 1] === true) { arr[i][j] += 1; }
+      }
+      if (matrix[i - 1] !== undefined && matrix[j + 1] !== undefined) {
+        if (matrix[i - 1][j + 1] === true) { arr[i][j] += 1; }
+      }
+      if (matrix[i - 1] !== undefined && matrix[j - 1] !== undefined) {
+        if (matrix[i - 1][j - 1] === true) { arr[i][j] += 1; }
+      }
+    }
+  }
+  return arr;
 }
 
 module.exports = minesweeper;
